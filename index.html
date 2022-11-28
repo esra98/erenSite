@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+  html, body{
+    margin: 0;
+    padding: 0;
+  }  
+  #container{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #map{
+    height: 80vh;
+    width: 80vh;
+  }
+  </style>
+</head>
+<body>
+
+  <div id="container">
+    <div id="map"></div>
+  </div>
+  <script>
+    function initMap() {
+  var mapOpts = {
+      center: {lat: 40.88305556, lng: 28.98694},
+      zoom: 11,
+      mapTypeId: google.maps.MapTypeId.TERRAIN,
+      styles: 
+      [
+        {
+          "featureType": "road.local",
+          "stylers": [
+            {
+              "weight": 4.5
+            }
+          ]
+        }
+      ]
+  };
+  
+  var map = new google.maps.Map(document.getElementById('map'), mapOpts);
+  
+  var bicyclayer = new google.maps.BicyclingLayer();
+  bicyclayer.setMap(map);
+  
+  var infowincontent = '<div style="width:500px">CONTENT</div>';
+  
+  // Clinton Pullout Marker
+  var marker1 = new google.maps.Marker({
+    position: {lat: 40.78805556, lng: 28.89138},
+    map: map,
+    title: 'Clinton Pullout',
+    animation: google.maps.Animation.DROP
+  });
+  
+  var infowindow1 = new google.maps.InfoWindow({
+    content: infowincontent.replace('CONTENT',
+    '<h2>Ses Kayıtları</h2><h3>8 metre derinlik:</h3><audio controls><source src="SG001005.wav adlı dosyanın kopyası" type="audio/wav"></audio><h3>15 metre derinlik:</h3><audio controls><source src="SG001006.wav adlı dosyanın kopyası" type="audio/wav"></audio><h3>20 metre derinlik:</h3><audio controls><source src="SG001007.wav adlı dosyanın kopyası" type="audio/wav"></audio>'      //'There is a parking pullout here with a trash bin.'
+    )
+  });
+  
+  marker1.addListener('click', function() {
+    infowindow1.open(map, marker1);
+  });
+  
+  // Airplane Road Marker 
+  var marker2 = new google.maps.Marker({
+    position:  {lat: 40.86305556, lng: 29.08694},
+    map: map,
+    title: 'Airplane Road',
+    animation: google.maps.Animation.DROP
+  });
+  
+  var infowindow2 = new google.maps.InfoWindow({
+    content: infowincontent.replace('CONTENT',
+    '<h2>Ses Kayıtları</h2><h3>8 metre derinlik:</h3><audio controls><source src="SG001005.wav adlı dosyanın kopyası" type="audio/wav"></audio><h3>15 metre derinlik:</h3><audio controls><source src="SG001006.wav adlı dosyanın kopyası" type="audio/wav"></audio><h3>20 metre derinlik:</h3><audio controls><source src="SG001007.wav adlı dosyanın kopyası" type="audio/wav"></audio>'
+      //'There is a parking pullout here with a trash bin.'
+    )
+  });
+  
+  marker2.addListener('click', function() {
+    infowindow2.open(map, marker2);
+  });
+  
+  // Battle of Raymond Marker
+  var marker3 = new google.maps.Marker({
+    position:  {lat: 40.99027778, lng: 28.98166},
+    map: map,
+    title: 'Battle of Raymond',
+    animation: google.maps.Animation.DROP
+  });
+  
+  var infowindow3 = new google.maps.InfoWindow({
+    content: infowincontent.replace('CONTENT',
+    '<h2>Ses Kayıtları</h2><h3>8 metre derinlik:</h3><audio controls><source src="SG001005.wav adlı dosyanın kopyası" type="audio/wav"></audio><h3>15 metre derinlik:</h3><audio controls><source src="SG001006.wav adlı dosyanın kopyası" type="audio/wav"></audio><h3>20 metre derinlik:</h3><audio controls><source src="SG001007.wav adlı dosyanın kopyası" type="audio/wav"></audio>'      //'There is a parking pullout here with a trash bin.'
+    )
+  });
+  
+  marker3.addListener('click', function() {
+    infowindow3.open(map, marker3);
+  });
+}
+  </script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBdjCdf_QowbfZUMPxsudKBaRYjGSSJh6g&callback=initMap">
+  </script>
+  
+</body>
+</html>
